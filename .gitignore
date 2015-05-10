@@ -1,0 +1,6 @@
+*.rej
+*.swp
+*.xccheckout
+*.xcuserdatad
+*.xcworkspacedata
+.DS_Store

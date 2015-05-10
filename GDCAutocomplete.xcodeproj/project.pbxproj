@@ -1,0 +1,502 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6E58AB6C1AE919D8004C78DF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E58AB6B1AE919D8004C78DF /* AppDelegate.m */; };
+		6E58AB6E1AE919D8004C78DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E58AB6D1AE919D8004C78DF /* main.m */; };
+		6E58AB701AE919D8004C78DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E58AB6F1AE919D8004C78DF /* Images.xcassets */; };
+		6E58AB731AE919D8004C78DF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E58AB711AE919D8004C78DF /* MainMenu.xib */; };
+		6E58ABA41AE91B2C004C78DF /* GDCAutocomplete.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E58AB8D1AE91B2C004C78DF /* GDCAutocomplete.framework */; };
+		6E58ABA51AE91B2C004C78DF /* GDCAutocomplete.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E58AB8D1AE91B2C004C78DF /* GDCAutocomplete.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E76308A1B136E4D008107EF /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7630891B136E4D008107EF /* Country.m */; };
+		6E803BC61AEBE5DD0011D780 /* GDCAutocompleteWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803BBB1AEBE5DD0011D780 /* GDCAutocompleteWindow.h */; };
+		6E803BC71AEBE5DD0011D780 /* GDCAutocompleteWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803BBC1AEBE5DD0011D780 /* GDCAutocompleteWindow.m */; };
+		6E803BCA1AEBE96F0011D780 /* GDCAutocompleteItemsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803BC81AEBE96F0011D780 /* GDCAutocompleteItemsView.h */; };
+		6E803BCB1AEBE96F0011D780 /* GDCAutocompleteItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803BC91AEBE96F0011D780 /* GDCAutocompleteItemsView.m */; };
+		6E803BD61AEBEF7E0011D780 /* SearchFieldController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803BD51AEBEF7E0011D780 /* SearchFieldController.m */; };
+		6E803C041AEC365A0011D780 /* GDCAutocomplete.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C011AEC365A0011D780 /* GDCAutocomplete.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E803C051AEC365A0011D780 /* GDCAutocomplete.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C021AEC365A0011D780 /* GDCAutocomplete.m */; };
+		6E803C0F1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C0D1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.h */; };
+		6E803C101AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C0E1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.m */; };
+		6E803C191AED3E970011D780 /* GDCAutocompleteDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C181AED3E970011D780 /* GDCAutocompleteDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6E803C1F1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C1D1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h */; };
+		6E803C201AF5E2CB0011D780 /* GDCAutocompleteHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C1E1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.m */; };
+		6E803C231AF5E4B70011D780 /* GDCAutocompleteFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C211AF5E4B70011D780 /* GDCAutocompleteFooterView.h */; };
+		6E803C241AF5E4B70011D780 /* GDCAutocompleteFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C221AF5E4B70011D780 /* GDCAutocompleteFooterView.m */; };
+		6E803C271AFE3DD90011D780 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C261AFE3DD90011D780 /* TableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6E58ABA21AE91B2C004C78DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E58AB5D1AE919D8004C78DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E58AB8C1AE91B2C004C78DF;
+			remoteInfo = Autocomplete;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6E58ABA91AE91B2D004C78DF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6E58ABA51AE91B2C004C78DF /* GDCAutocomplete.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6E58AB651AE919D8004C78DF /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E58AB691AE919D8004C78DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E58AB6A1AE919D8004C78DF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6E58AB6B1AE919D8004C78DF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6E58AB6D1AE919D8004C78DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6E58AB6F1AE919D8004C78DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6E58AB721AE919D8004C78DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6E58AB8D1AE91B2C004C78DF /* GDCAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GDCAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E7630881B136E4C008107EF /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		6E7630891B136E4D008107EF /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
+		6E803BBB1AEBE5DD0011D780 /* GDCAutocompleteWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDCAutocompleteWindow.h; sourceTree = "<group>"; };
+		6E803BBC1AEBE5DD0011D780 /* GDCAutocompleteWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDCAutocompleteWindow.m; sourceTree = "<group>"; };
+		6E803BC81AEBE96F0011D780 /* GDCAutocompleteItemsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDCAutocompleteItemsView.h; sourceTree = "<group>"; };
+		6E803BC91AEBE96F0011D780 /* GDCAutocompleteItemsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDCAutocompleteItemsView.m; sourceTree = "<group>"; };
+		6E803BD41AEBEF7E0011D780 /* SearchFieldController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFieldController.h; sourceTree = "<group>"; };
+		6E803BD51AEBEF7E0011D780 /* SearchFieldController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFieldController.m; sourceTree = "<group>"; };
+		6E803C011AEC365A0011D780 /* GDCAutocomplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDCAutocomplete.h; sourceTree = "<group>"; };
+		6E803C021AEC365A0011D780 /* GDCAutocomplete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDCAutocomplete.m; sourceTree = "<group>"; };
+		6E803C0D1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDCAutocompleteFieldEditorDelegateInterceptor.h; sourceTree = "<group>"; };
+		6E803C0E1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDCAutocompleteFieldEditorDelegateInterceptor.m; sourceTree = "<group>"; };
+		6E803C181AED3E970011D780 /* GDCAutocompleteDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDCAutocompleteDelegate.h; sourceTree = "<group>"; };
+		6E803C1D1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDCAutocompleteHeaderView.h; sourceTree = "<group>"; };
+		6E803C1E1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDCAutocompleteHeaderView.m; sourceTree = "<group>"; };
+		6E803C211AF5E4B70011D780 /* GDCAutocompleteFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDCAutocompleteFooterView.h; sourceTree = "<group>"; };
+		6E803C221AF5E4B70011D780 /* GDCAutocompleteFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDCAutocompleteFooterView.m; sourceTree = "<group>"; };
+		6E803C251AFE3DD90011D780 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		6E803C261AFE3DD90011D780 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E58AB621AE919D8004C78DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E58ABA41AE91B2C004C78DF /* GDCAutocomplete.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E58AB891AE91B2C004C78DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E58AB5C1AE919D8004C78DF = {
+			isa = PBXGroup;
+			children = (
+				6E58AB671AE919D8004C78DF /* DemoApp */,
+				6E58AB8E1AE91B2C004C78DF /* Framework */,
+				6E58AB661AE919D8004C78DF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6E58AB661AE919D8004C78DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E58AB651AE919D8004C78DF /* DemoApp.app */,
+				6E58AB8D1AE91B2C004C78DF /* GDCAutocomplete.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E58AB671AE919D8004C78DF /* DemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				6E58AB6A1AE919D8004C78DF /* AppDelegate.h */,
+				6E58AB6B1AE919D8004C78DF /* AppDelegate.m */,
+				6E58AB6F1AE919D8004C78DF /* Images.xcassets */,
+				6E58AB711AE919D8004C78DF /* MainMenu.xib */,
+				6E58AB6D1AE919D8004C78DF /* main.m */,
+				6E803BD41AEBEF7E0011D780 /* SearchFieldController.h */,
+				6E803BD51AEBEF7E0011D780 /* SearchFieldController.m */,
+				6E803C251AFE3DD90011D780 /* TableViewController.h */,
+				6E803C261AFE3DD90011D780 /* TableViewController.m */,
+				6E7630881B136E4C008107EF /* Country.h */,
+				6E7630891B136E4D008107EF /* Country.m */,
+			);
+			path = DemoApp;
+			sourceTree = "<group>";
+		};
+		6E58AB8E1AE91B2C004C78DF /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				6E58AB691AE919D8004C78DF /* Info.plist */,
+				6E803C181AED3E970011D780 /* GDCAutocompleteDelegate.h */,
+				6E803C011AEC365A0011D780 /* GDCAutocomplete.h */,
+				6E803C021AEC365A0011D780 /* GDCAutocomplete.m */,
+				6E803BBB1AEBE5DD0011D780 /* GDCAutocompleteWindow.h */,
+				6E803BBC1AEBE5DD0011D780 /* GDCAutocompleteWindow.m */,
+				6E803BC81AEBE96F0011D780 /* GDCAutocompleteItemsView.h */,
+				6E803BC91AEBE96F0011D780 /* GDCAutocompleteItemsView.m */,
+				6E803C1D1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h */,
+				6E803C1E1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.m */,
+				6E803C211AF5E4B70011D780 /* GDCAutocompleteFooterView.h */,
+				6E803C221AF5E4B70011D780 /* GDCAutocompleteFooterView.m */,
+				6E803C0D1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.h */,
+				6E803C0E1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.m */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6E58AB8A1AE91B2C004C78DF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E803C041AEC365A0011D780 /* GDCAutocomplete.h in Headers */,
+				6E803C191AED3E970011D780 /* GDCAutocompleteDelegate.h in Headers */,
+				6E803C1F1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h in Headers */,
+				6E803BC61AEBE5DD0011D780 /* GDCAutocompleteWindow.h in Headers */,
+				6E803BCA1AEBE96F0011D780 /* GDCAutocompleteItemsView.h in Headers */,
+				6E803C0F1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.h in Headers */,
+				6E803C231AF5E4B70011D780 /* GDCAutocompleteFooterView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6E58AB641AE919D8004C78DF /* DemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E58AB821AE919D9004C78DF /* Build configuration list for PBXNativeTarget "DemoApp" */;
+			buildPhases = (
+				6E58AB611AE919D8004C78DF /* Sources */,
+				6E58AB621AE919D8004C78DF /* Frameworks */,
+				6E58AB631AE919D8004C78DF /* Resources */,
+				6E58ABA91AE91B2D004C78DF /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6E58ABA31AE91B2C004C78DF /* PBXTargetDependency */,
+			);
+			name = DemoApp;
+			productName = Autocomplete;
+			productReference = 6E58AB651AE919D8004C78DF /* DemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6E58AB8C1AE91B2C004C78DF /* GDCAutocomplete */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E58ABA61AE91B2D004C78DF /* Build configuration list for PBXNativeTarget "GDCAutocomplete" */;
+			buildPhases = (
+				6E58AB881AE91B2C004C78DF /* Sources */,
+				6E58AB891AE91B2C004C78DF /* Frameworks */,
+				6E58AB8A1AE91B2C004C78DF /* Headers */,
+				6E58AB8B1AE91B2C004C78DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GDCAutocomplete;
+			productName = Autocomplete;
+			productReference = 6E58AB8D1AE91B2C004C78DF /* GDCAutocomplete.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E58AB5D1AE919D8004C78DF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Dado Colussi";
+				TargetAttributes = {
+					6E58AB641AE919D8004C78DF = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					6E58AB8C1AE91B2C004C78DF = {
+						CreatedOnToolsVersion = 6.3;
+					};
+				};
+			};
+			buildConfigurationList = 6E58AB601AE919D8004C78DF /* Build configuration list for PBXProject "GDCAutocomplete" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6E58AB5C1AE919D8004C78DF;
+			productRefGroup = 6E58AB661AE919D8004C78DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E58AB641AE919D8004C78DF /* DemoApp */,
+				6E58AB8C1AE91B2C004C78DF /* GDCAutocomplete */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E58AB631AE919D8004C78DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E58AB701AE919D8004C78DF /* Images.xcassets in Resources */,
+				6E58AB731AE919D8004C78DF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E58AB8B1AE91B2C004C78DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E58AB611AE919D8004C78DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E803BD61AEBEF7E0011D780 /* SearchFieldController.m in Sources */,
+				6E58AB6E1AE919D8004C78DF /* main.m in Sources */,
+				6E58AB6C1AE919D8004C78DF /* AppDelegate.m in Sources */,
+				6E76308A1B136E4D008107EF /* Country.m in Sources */,
+				6E803C271AFE3DD90011D780 /* TableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E58AB881AE91B2C004C78DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E803C051AEC365A0011D780 /* GDCAutocomplete.m in Sources */,
+				6E803C241AF5E4B70011D780 /* GDCAutocompleteFooterView.m in Sources */,
+				6E803C201AF5E2CB0011D780 /* GDCAutocompleteHeaderView.m in Sources */,
+				6E803C101AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.m in Sources */,
+				6E803BCB1AEBE96F0011D780 /* GDCAutocompleteItemsView.m in Sources */,
+				6E803BC71AEBE5DD0011D780 /* GDCAutocompleteWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6E58ABA31AE91B2C004C78DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E58AB8C1AE91B2C004C78DF /* GDCAutocomplete */;
+			targetProxy = 6E58ABA21AE91B2C004C78DF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6E58AB711AE919D8004C78DF /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E58AB721AE919D8004C78DF /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6E58AB801AE919D9004C78DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6E58AB811AE919D9004C78DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6E58AB831AE919D9004C78DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DemoApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6E58AB841AE919D9004C78DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DemoApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6E58ABA71AE91B2D004C78DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Framework/Info.plist;
+				INSTALL_PATH = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6E58ABA81AE91B2D004C78DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Framework/Info.plist;
+				INSTALL_PATH = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6E58AB601AE919D8004C78DF /* Build configuration list for PBXProject "GDCAutocomplete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E58AB801AE919D9004C78DF /* Debug */,
+				6E58AB811AE919D9004C78DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E58AB821AE919D9004C78DF /* Build configuration list for PBXNativeTarget "DemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E58AB831AE919D9004C78DF /* Debug */,
+				6E58AB841AE919D9004C78DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E58ABA61AE91B2D004C78DF /* Build configuration list for PBXNativeTarget "GDCAutocomplete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E58ABA71AE91B2D004C78DF /* Debug */,
+				6E58ABA81AE91B2D004C78DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6E58AB5D1AE919D8004C78DF /* Project object */;
+}
