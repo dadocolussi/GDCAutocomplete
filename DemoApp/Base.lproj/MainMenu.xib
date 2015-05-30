@@ -896,6 +896,9 @@
             </connections>
         </customObject>
         <customObject id="Dhs-S5-X1Q" userLabel="NSTableView Autocomplete" customClass="GDCAutocomplete">
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="searchMode" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="controlToComplete" destination="swK-Tl-fp3" id="62R-03-VUh"/>
                 <outlet property="delegate" destination="1Wp-l0-Cdg" id="ReD-WX-Vck"/>
