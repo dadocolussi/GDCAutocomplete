@@ -24,6 +24,9 @@
 #import "GDCAutocompleteHeaderView.h"
 
 
+static const CGFloat cornerRadius = 8.0;
+
+
 @implementation GDCAutocompleteHeaderView
 
 
@@ -36,17 +39,30 @@
 - (void)drawRect:(NSRect)rect
 {
 	NSRect bounds = [self bounds];
-	CGFloat cornerRadius = self.bounds.size.height;
 	NSPoint upperLeft = NSMakePoint(0.0, 0.0);
 	NSPoint upperRight = NSMakePoint(bounds.size.width, 0.0);
+	NSPoint lowerLeft = NSMakePoint(0.0, bounds.size.height);
+	NSPoint lowerRight = NSMakePoint(bounds.size.width, bounds.size.height);
 	
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(0.0, cornerRadius)];
-	[path curveToPoint:NSMakePoint(cornerRadius, 0.0)
-		 controlPoint1:upperLeft controlPoint2:upperLeft];
-	[path lineToPoint:NSMakePoint(bounds.size.width - cornerRadius, 0.0)];
-	[path curveToPoint:NSMakePoint(bounds.size.width, cornerRadius)
-		 controlPoint1:upperRight controlPoint2:upperRight];
+	
+	// Upper left curve
+	[path moveToPoint:NSMakePoint(upperLeft.x, upperLeft.y + cornerRadius)];
+	[path curveToPoint:NSMakePoint(cornerRadius, 0.0) controlPoint1:upperLeft controlPoint2:upperLeft];
+	
+	// Top line
+	[path lineToPoint:NSMakePoint(upperRight.x - cornerRadius, upperRight.y)];
+	
+	// Top right curve
+	[path curveToPoint:NSMakePoint(upperRight.x, upperRight.y + cornerRadius) controlPoint1:upperRight controlPoint2:upperRight];
+	
+	// Right vertical line
+	[path lineToPoint:lowerRight];
+	
+	// Bottom line
+	[path lineToPoint:lowerLeft];
+	
+	// Left vertical line
 	[path closePath];
 	
 	[[NSColor clearColor] set];

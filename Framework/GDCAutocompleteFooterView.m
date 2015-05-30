@@ -24,6 +24,9 @@
 #import "GDCAutocompleteFooterView.h"
 
 
+static const CGFloat cornerRadius = 8.0;
+
+
 @implementation GDCAutocompleteFooterView
 
 
@@ -36,17 +39,30 @@
 - (void)drawRect:(NSRect)rect
 {
 	NSRect bounds = [self bounds];
-	CGFloat cornerRadius = self.bounds.size.height;
+	NSPoint upperLeft = NSMakePoint(0.0, 0.0);
+	NSPoint upperRight = NSMakePoint(bounds.size.width, 0.0);
 	NSPoint lowerLeft = NSMakePoint(0.0, bounds.size.height);
 	NSPoint lowerRight = NSMakePoint(bounds.size.width, bounds.size.height);
 	
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(bounds.size.width, bounds.size.height - cornerRadius)];
-	[path curveToPoint:NSMakePoint(bounds.size.width - cornerRadius, bounds.size.height)
-		 controlPoint1:lowerRight controlPoint2:lowerRight];
-	[path lineToPoint:NSMakePoint(cornerRadius, bounds.size.height)];
-	[path curveToPoint:NSMakePoint(0.0, bounds.size.height - cornerRadius)
-		 controlPoint1:lowerLeft controlPoint2:lowerLeft];
+	
+	// Top line
+	[path moveToPoint:upperLeft];
+	[path lineToPoint:upperRight];
+	
+	// Right vertical line
+	[path lineToPoint:NSMakePoint(lowerRight.x, lowerRight.y - cornerRadius)];
+	
+	// Lower right curve
+	[path curveToPoint:NSMakePoint(lowerRight.x - cornerRadius, lowerRight.y) controlPoint1:lowerRight controlPoint2:lowerRight];
+	
+	// Bottom line
+	[path lineToPoint:NSMakePoint(lowerLeft.x + cornerRadius, lowerLeft.y)];
+	
+	// Lower left curve
+	[path curveToPoint:NSMakePoint(lowerLeft.x, lowerLeft.y - cornerRadius) controlPoint1:lowerLeft controlPoint2:lowerLeft];
+	
+	// Left vertical line
 	[path closePath];
 	
 	[[NSColor clearColor] set];
