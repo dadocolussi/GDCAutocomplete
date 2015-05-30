@@ -654,6 +654,7 @@ static char *AttachedControlWindowContext = "window";
 			[self updateFieldEditor];
 		}
 		
+		[self.controlWindow addChildWindow:self.window ordered:NSWindowAbove];
 		[self.window makeKeyAndOrderFront:sender];
 		[self.window makeFirstResponder:self.itemsView];
 	}
@@ -668,7 +669,8 @@ static char *AttachedControlWindowContext = "window";
 {
 	if (self.window.isVisible)
 	{
-		[self.window orderOut:sender];
+		[self.window orderOut:nil];
+		[self.controlWindow removeChildWindow:self.window];
 	}
 }
 
@@ -781,7 +783,7 @@ static char *AttachedControlWindowContext = "window";
 		[self.itemsView clearHighlighting];
 	}
 	
-	[self.window orderOut:sender];
+	[self hideWindow:sender];
 }
 
 
@@ -898,7 +900,12 @@ static char *AttachedControlWindowContext = "window";
 			[[NSNotificationCenter defaultCenter] removeObserver:self
 															name:NSWindowDidResignKeyNotification
 														  object:self.controlWindow];
-			[self.controlWindow removeChildWindow:self.window];
+			
+			if (self.window.parentWindow != nil)
+			{
+				[self.controlWindow removeChildWindow:self.window];
+			}
+			
 			self.controlWindow = nil;
 		}
 		
@@ -911,8 +918,6 @@ static char *AttachedControlWindowContext = "window";
 													 selector:@selector(controlWindowDidResignKey:)
 														 name:NSWindowDidResignKeyNotification
 													   object:self.controlWindow];
-			[self.controlWindow addChildWindow:self.window ordered:NSWindowAbove];
-			[self.window orderOut:nil];
 		}
 	}
 	else
