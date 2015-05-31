@@ -26,7 +26,11 @@
 
 
 @interface TableViewController ()
-@property (strong, nonatomic) NSArray *sourceItems;
+@property (strong, nonatomic) NSArray *euItems;
+@property (strong, nonatomic) NSArray *usItems;
+@property (strong, nonatomic, readonly) NSArray *sourceItems;
+@property (copy, nonatomic) NSString *inputString;
+- (void)refreshSuggestions;
 @end
 
 
@@ -44,10 +48,9 @@
 }
 
 
-- (NSArray*)sourceItems
+- (NSArray*)euItems
 {
-	
-	if (_sourceItems == nil)
+	if (_euItems == nil)
 	{
 		NSMutableArray *items = [NSMutableArray array];
 		[items addObject:[Country countryWithName:@"Austria" capital:@"Vienna"]];
@@ -78,18 +81,110 @@
 		[items addObject:[Country countryWithName:@"Spain" capital:@"Madrid"]];
 		[items addObject:[Country countryWithName:@"Sweden" capital:@"Stockholm"]];
 		[items addObject:[Country countryWithName:@"United Kingdom" capital:@"London"]];
-		_sourceItems = items;
+		_euItems = items;
 	}
 	
-	return _sourceItems;
+	return _euItems;
+}
+
+
+- (NSArray*)usItems
+{
+	if (_usItems == nil)
+	{
+		NSMutableArray *items = [NSMutableArray array];
+		[items addObject:[Country countryWithName:@"Alabama" capital:@"Montgomery"]];
+		[items addObject:[Country countryWithName:@"Alaska" capital:@"Juneau"]];
+		[items addObject:[Country countryWithName:@"Arizona" capital:@"Phoenix"]];
+		[items addObject:[Country countryWithName:@"Arkansas" capital:@"Little Rock"]];
+		[items addObject:[Country countryWithName:@"California" capital:@"Sacramento"]];
+		[items addObject:[Country countryWithName:@"Colorado" capital:@"Denver"]];
+		[items addObject:[Country countryWithName:@"Connecticut" capital:@"Hartford"]];
+		[items addObject:[Country countryWithName:@"Delaware" capital:@"Dover"]];
+		[items addObject:[Country countryWithName:@"Florida" capital:@"Tallahassee"]];
+		[items addObject:[Country countryWithName:@"Georgia" capital:@"Atlanta"]];
+		[items addObject:[Country countryWithName:@"Hawaii" capital:@"Honolulu"]];
+		[items addObject:[Country countryWithName:@"Idaho" capital:@"Boise"]];
+		[items addObject:[Country countryWithName:@"Illinois" capital:@"Springfield"]];
+		[items addObject:[Country countryWithName:@"Indiana" capital:@"Indianapolis"]];
+		[items addObject:[Country countryWithName:@"Iowa" capital:@"Des Moines"]];
+		[items addObject:[Country countryWithName:@"Kansas" capital:@"Topeka"]];
+		[items addObject:[Country countryWithName:@"Kentucky" capital:@"Frankfort"]];
+		[items addObject:[Country countryWithName:@"Louisiana" capital:@"Baton Rouge"]];
+		[items addObject:[Country countryWithName:@"Maine" capital:@"Augusta"]];
+		[items addObject:[Country countryWithName:@"Maryland" capital:@"Annapolis"]];
+		[items addObject:[Country countryWithName:@"Massachusetts" capital:@"Boston"]];
+		[items addObject:[Country countryWithName:@"Michigan" capital:@"Lansing"]];
+		[items addObject:[Country countryWithName:@"Minnesota" capital:@"St. Paul"]];
+		[items addObject:[Country countryWithName:@"Mississippi" capital:@"Jackson"]];
+		[items addObject:[Country countryWithName:@"Missouri" capital:@"Jefferson City"]];
+		[items addObject:[Country countryWithName:@"Montana" capital:@"Helena"]];
+		[items addObject:[Country countryWithName:@"Nebraska" capital:@"Lincoln"]];
+		[items addObject:[Country countryWithName:@"Nevada" capital:@"Carson City"]];
+		[items addObject:[Country countryWithName:@"New Hampshire" capital:@"Concord"]];
+		[items addObject:[Country countryWithName:@"New Jersey" capital:@"Trenton"]];
+		[items addObject:[Country countryWithName:@"New Mexico" capital:@"Santa Fe"]];
+		[items addObject:[Country countryWithName:@"New York" capital:@"Albany"]];
+		[items addObject:[Country countryWithName:@"North Carolina" capital:@"Raleigh"]];
+		[items addObject:[Country countryWithName:@"North Dakota" capital:@"Bismarck"]];
+		[items addObject:[Country countryWithName:@"Ohio" capital:@"Columbus"]];
+		[items addObject:[Country countryWithName:@"Oklahoma" capital:@"Oklahoma City"]];
+		[items addObject:[Country countryWithName:@"Oregon" capital:@"Salem"]];
+		[items addObject:[Country countryWithName:@"Pennsylvania" capital:@"Harrisburg"]];
+		[items addObject:[Country countryWithName:@"Rhode Island" capital:@"Providence"]];
+		[items addObject:[Country countryWithName:@"South Carolina" capital:@"Columbia"]];
+		[items addObject:[Country countryWithName:@"South Dakota" capital:@"Pierre"]];
+		[items addObject:[Country countryWithName:@"Tennessee" capital:@"Nashville"]];
+		[items addObject:[Country countryWithName:@"Texas" capital:@"Austin"]];
+		[items addObject:[Country countryWithName:@"Utah" capital:@"Salt Lake City"]];
+		[items addObject:[Country countryWithName:@"Vermont" capital:@"Montpelier"]];
+		[items addObject:[Country countryWithName:@"Virginia" capital:@"Richmond"]];
+		[items addObject:[Country countryWithName:@"Washington" capital:@"Olympia"]];
+		[items addObject:[Country countryWithName:@"West Virginia" capital:@"Charleston"]];
+		[items addObject:[Country countryWithName:@"Wisconsin" capital:@"Madison"]];
+		[items addObject:[Country countryWithName:@"Wyoming" capital:@"Cheyenne"]];
+		_usItems = items;
+	}
+	
+	return _usItems;
+}
+
+
+- (NSArray*)sourceItems
+{
+	switch (self.selectedRegionTag)
+	{
+		case 0:
+			return self.euItems;
+		case 1:
+			return self.usItems;
+		default:
+			@throw [NSException exceptionWithName:NSInternalInconsistencyException
+										   reason:@"Invalid region tag"
+										 userInfo:nil];
+	}
+}
+
+
+- (void)setSelectedRegionTag:(NSInteger)t
+{
+	_selectedRegionTag = t;
+	[self refreshSuggestions];
+}
+
+
+- (void)refreshSuggestions
+{
+	NSPredicate *filter = [NSPredicate predicateWithFormat:@"self.countryName contains [cd] %@", self.inputString];
+	self.autocomplete.suggestedItems = [self.sourceItems filteredArrayUsingPredicate:filter];
+	[self.autocomplete showWindow:nil];
 }
 
 
 - (void)autocomplete:(GDCAutocomplete*)ac refreshSuggestedItemsForString:(NSString*)s
 {
-	NSPredicate *filter = [NSPredicate predicateWithFormat:@"self.countryName contains [cd] %@", s];
-	ac.suggestedItems = [self.sourceItems filteredArrayUsingPredicate:filter];
-	[ac showWindow:nil];
+	self.inputString = s;
+	[self refreshSuggestions];
 }
 
 

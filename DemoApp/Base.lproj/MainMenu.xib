@@ -834,6 +834,9 @@
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="translatesMasksIntoConstraings" value="NO"/>
+                </userDefinedRuntimeAttributes>
             </view>
             <toolbar key="toolbar" implicitIdentifier="1B74AA56-C09C-4043-A978-F6E66D333CD6" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="HwH-Zf-6lW">
                 <allowedToolbarItems>
@@ -876,6 +879,7 @@
         </viewController>
         <viewController id="1Wp-l0-Cdg" userLabel="NSTableView Controller" customClass="TableViewController">
             <connections>
+                <outlet property="autocomplete" destination="Dhs-S5-X1Q" id="YEn-cw-1DI"/>
                 <outlet property="items" destination="qm9-pr-8Bc" id="dyl-Ap-k6h"/>
             </connections>
         </viewController>
@@ -901,9 +905,37 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="controlToComplete" destination="swK-Tl-fp3" id="62R-03-VUh"/>
+                <outlet property="customFooterView" destination="AkP-P1-hPL" id="sl8-hJ-mkM"/>
                 <outlet property="delegate" destination="1Wp-l0-Cdg" id="ReD-WX-Vck"/>
             </connections>
         </customObject>
+        <customView id="AkP-P1-hPL" userLabel="Custom Footer View" customClass="GDCAutocompleteFooterView">
+            <rect key="frame" x="0.0" y="0.0" width="119" height="23"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kYN-Ts-VZ4">
+                    <rect key="frame" x="6" y="4" width="107" height="15"/>
+                    <segmentedCell key="cell" controlSize="mini" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="xvL-W2-b4a">
+                        <font key="font" metaFont="miniSystem"/>
+                        <segments>
+                            <segment label="EU" width="50" selected="YES"/>
+                            <segment label="US" width="50" tag="1"/>
+                        </segments>
+                        <connections>
+                            <binding destination="1Wp-l0-Cdg" name="selectedTag" keyPath="selectedRegionTag" id="zA5-TK-8uJ"/>
+                        </connections>
+                    </segmentedCell>
+                    <connections>
+                        <binding destination="1Wp-l0-Cdg" name="selectedTag" keyPath="selectedRegionTag" id="rFI-3l-1WZ"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="kYN-Ts-VZ4" secondAttribute="centerX" id="s2U-o3-TTw"/>
+                <constraint firstAttribute="centerY" secondItem="kYN-Ts-VZ4" secondAttribute="centerY" id="vqd-dK-hJO"/>
+            </constraints>
+            <point key="canvasLocation" x="39.5" y="455"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>

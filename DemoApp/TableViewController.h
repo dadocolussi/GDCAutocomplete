@@ -28,7 +28,9 @@
 @interface TableViewController : NSViewController <GDCAutocompleteDelegate>
 
 
+@property (weak, nonatomic) IBOutlet GDCAutocomplete *autocomplete;
 @property (strong, nonatomic) IBOutlet NSArrayController *items;
+@property (assign, nonatomic) NSInteger selectedRegionTag;
 
 
 @end
