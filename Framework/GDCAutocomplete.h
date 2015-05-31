@@ -24,6 +24,8 @@
 #import <Cocoa/Cocoa.h>
 
 #import <GDCAutocomplete/GDCAutocompleteDelegate.h>
+#import <GDCAutocomplete/GDCAutocompleteHeaderView.h>
+#import <GDCAutocomplete/GDCAutocompleteFooterView.h>
 
 
 FOUNDATION_EXPORT double GDCAutocompleteVersionNumber;
@@ -41,6 +43,12 @@ FOUNDATION_EXPORT const unsigned char GDCAutocompleteVersionString[];
 // This should reference an NSControl object that will be autocompleted.
 // Required.
 @property (weak, nonatomic) IBOutlet NSControl *controlToComplete;
+
+
+// Custom header and footer views.
+// Optional.
+@property (strong, nonatomic) IBOutlet NSView *customHeaderView;
+@property (strong, nonatomic) IBOutlet NSView *customFooterView;
 
 
 // Assign a custom NSCell if you need to change how the suggested items are displayed.

@@ -24,9 +24,9 @@
 		6E803C0F1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C0D1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.h */; };
 		6E803C101AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C0E1AEC71DF0011D780 /* GDCAutocompleteFieldEditorDelegateInterceptor.m */; };
 		6E803C191AED3E970011D780 /* GDCAutocompleteDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C181AED3E970011D780 /* GDCAutocompleteDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E803C1F1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C1D1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h */; };
+		6E803C1F1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C1D1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E803C201AF5E2CB0011D780 /* GDCAutocompleteHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C1E1AF5E2CB0011D780 /* GDCAutocompleteHeaderView.m */; };
-		6E803C231AF5E4B70011D780 /* GDCAutocompleteFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C211AF5E4B70011D780 /* GDCAutocompleteFooterView.h */; };
+		6E803C231AF5E4B70011D780 /* GDCAutocompleteFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E803C211AF5E4B70011D780 /* GDCAutocompleteFooterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E803C241AF5E4B70011D780 /* GDCAutocompleteFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C221AF5E4B70011D780 /* GDCAutocompleteFooterView.m */; };
 		6E803C271AFE3DD90011D780 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E803C261AFE3DD90011D780 /* TableViewController.m */; };
 /* End PBXBuildFile section */

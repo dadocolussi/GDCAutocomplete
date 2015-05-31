@@ -73,6 +73,8 @@ static char *AttachedControlWindowContext = "window";
 @property (strong, nonatomic) NSScrollView *scrollView;
 @property (strong, nonatomic) GDCAutocompleteItemsView *itemsView;
 @property (strong, nonatomic) NSWindow *controlWindow;
+@property (strong, nonatomic) NSLayoutConstraint *scrollTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *scrollBottomConstraint;
 @property (assign, nonatomic) BOOL isAttached;
 @property (copy, nonatomic) NSString *originalInput;
 @property (assign, nonatomic) BOOL autocompleteSubviews;
@@ -208,6 +210,65 @@ static char *AttachedControlWindowContext = "window";
 }
 
 
+- (void)setCustomHeaderView:(NSView*)v
+{
+	NSAssert(self.customHeaderView == nil, @"Custom header view is already set");
+	_customHeaderView = v;
+	
+	if (self.customHeaderView != nil)
+	{
+		self.headerView.hidden = YES;
+		[self.containerView addSubview:self.customHeaderView];
+		self.customHeaderView.translatesAutoresizingMaskIntoConstraints = NO;
+		NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.customHeaderView
+																  attribute:NSLayoutAttributeHeight
+																  relatedBy:NSLayoutRelationEqual
+																	 toItem:nil
+																  attribute:NSLayoutAttributeNotAnAttribute
+																 multiplier:1.0
+																   constant:self.customHeaderView.bounds.size.height];
+		NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.customHeaderView
+															   attribute:NSLayoutAttributeTop
+															   relatedBy:NSLayoutRelationEqual
+																  toItem:self.containerView
+															   attribute:NSLayoutAttributeTop
+															  multiplier:1.0
+																constant:0.0];
+		NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.customHeaderView
+																attribute:NSLayoutAttributeLeft
+																relatedBy:NSLayoutRelationEqual
+																   toItem:self.containerView
+																attribute:NSLayoutAttributeLeft
+															   multiplier:1.0
+																 constant:0.0];
+		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self.customHeaderView
+																 attribute:NSLayoutAttributeRight
+																 relatedBy:NSLayoutRelationEqual
+																	toItem:self.containerView
+																 attribute:NSLayoutAttributeRight
+																multiplier:1.0
+																  constant:0.0];
+		[self.containerView addConstraint:height];
+		[self.containerView addConstraint:top];
+		[self.containerView addConstraint:left];
+		[self.containerView addConstraint:right];
+		[self.containerView removeConstraint:self.scrollTopConstraint];
+		self.scrollTopConstraint = [NSLayoutConstraint constraintWithItem:self.scrollView
+																attribute:NSLayoutAttributeTop
+																relatedBy:NSLayoutRelationEqual
+																   toItem:self.customHeaderView
+																attribute:NSLayoutAttributeBottom
+															   multiplier:1.0
+																 constant:0.0];
+		[self.containerView addConstraint:self.scrollTopConstraint];
+	}
+	else
+	{
+		self.customHeaderView.hidden = NO;
+	}
+}
+
+
 - (void)createFooterView
 {
 	self.footerView = [[GDCAutocompleteFooterView alloc] initWithFrame:NSZeroRect];
@@ -250,6 +311,65 @@ static char *AttachedControlWindowContext = "window";
 	[self.containerView addConstraint:bottom];
 	[self.containerView addConstraint:left];
 	[self.containerView addConstraint:right];
+}
+
+
+- (void)setCustomFooterView:(NSView*)v
+{
+	NSAssert(self.customFooterView == nil, @"Custom footer view is already set");
+	_customFooterView = v;
+	
+	if (self.customFooterView != nil)
+	{
+		self.footerView.hidden = YES;
+		[self.containerView addSubview:self.customFooterView];
+		self.customFooterView.translatesAutoresizingMaskIntoConstraints = NO;
+		NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.customFooterView
+																  attribute:NSLayoutAttributeHeight
+																  relatedBy:NSLayoutRelationEqual
+																	 toItem:nil
+																  attribute:NSLayoutAttributeNotAnAttribute
+																 multiplier:1.0
+																   constant:self.customFooterView.bounds.size.height];
+		NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.customFooterView
+																  attribute:NSLayoutAttributeBottom
+																  relatedBy:NSLayoutRelationEqual
+																  toItem:self.containerView
+																  attribute:NSLayoutAttributeBottom
+																 multiplier:1.0
+																   constant:0.0];
+		NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.customFooterView
+																attribute:NSLayoutAttributeLeft
+																relatedBy:NSLayoutRelationEqual
+																   toItem:self.containerView
+																attribute:NSLayoutAttributeLeft
+															   multiplier:1.0
+																 constant:0.0];
+		NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self.customFooterView
+																 attribute:NSLayoutAttributeRight
+																 relatedBy:NSLayoutRelationEqual
+																	toItem:self.containerView
+																 attribute:NSLayoutAttributeRight
+																multiplier:1.0
+																  constant:0.0];
+		[self.containerView addConstraint:height];
+		[self.containerView addConstraint:bottom];
+		[self.containerView addConstraint:left];
+		[self.containerView addConstraint:right];
+		[self.containerView removeConstraint:self.scrollBottomConstraint];
+		self.scrollBottomConstraint = [NSLayoutConstraint constraintWithItem:self.scrollView
+																   attribute:NSLayoutAttributeBottom
+																   relatedBy:NSLayoutRelationEqual
+																	  toItem:self.customFooterView
+																   attribute:NSLayoutAttributeTop
+																  multiplier:1.0
+																	constant:0.0];
+		[self.containerView addConstraint:self.scrollBottomConstraint];
+	}
+	else
+	{
+		self.customFooterView.hidden = NO;
+	}
 }
 
 
@@ -303,6 +423,8 @@ static char *AttachedControlWindowContext = "window";
 	[self.containerView addConstraint:bottom];
 	[self.containerView addConstraint:left];
 	[self.containerView addConstraint:right];
+	self.scrollTopConstraint = top;
+	self.scrollBottomConstraint = bottom;
 }
 
 
@@ -581,6 +703,17 @@ static char *AttachedControlWindowContext = "window";
 }
 
 
+- (CGFloat)contentHeight
+{
+	NSView *h = self.customHeaderView != nil ? self.customHeaderView : self.headerView;
+	NSView *f = self.customFooterView != nil ? self.customFooterView : self.footerView;
+	CGFloat height = h.frame.size.height;
+	height += self.itemsView.frame.size.height;
+	height += f.frame.size.height;
+	return height;
+}
+
+
 - (void)layout
 {
 	NSAssert(self.controlToComplete != nil, @"Autocomplete is not set to complete any control");
@@ -606,9 +739,7 @@ static char *AttachedControlWindowContext = "window";
 	}
 	
 	// Set window height to match content.
-	frame.size.height = self.headerView.frame.size.height;
-	frame.size.height += self.footerView.frame.size.height;
-	frame.size.height += self.itemsView.frame.size.height;
+	frame.size.height = [self contentHeight];
 
 	// Respect maximum height.
 	if (self.itemsView.frame.size.height > self.window.maxSize.height)
