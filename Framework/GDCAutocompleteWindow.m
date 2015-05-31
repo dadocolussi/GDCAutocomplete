@@ -57,19 +57,13 @@
 
 - (BOOL)canBecomeKeyWindow
 {
-	return NO;
+	return YES;
 }
 
 
 - (BOOL)canBecomeMainWindow
 {
 	return NO;
-}
-
-
-- (BOOL)isKeyWindow
-{
-	return YES;
 }
 
 
