@@ -834,9 +834,6 @@
                         </textFieldCell>
                     </textField>
                 </subviews>
-                <userDefinedRuntimeAttributes>
-                    <userDefinedRuntimeAttribute type="boolean" keyPath="translatesMasksIntoConstraings" value="NO"/>
-                </userDefinedRuntimeAttributes>
             </view>
             <toolbar key="toolbar" implicitIdentifier="1B74AA56-C09C-4043-A978-F6E66D333CD6" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="HwH-Zf-6lW">
                 <allowedToolbarItems>
