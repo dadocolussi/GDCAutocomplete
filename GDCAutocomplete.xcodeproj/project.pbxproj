@@ -56,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E0E21301C7A1260000EDC37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E58AB651AE919D8004C78DF /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E58AB691AE919D8004C78DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E58AB6A1AE919D8004C78DF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		6E58AB671AE919D8004C78DF /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				6E0E21301C7A1260000EDC37 /* Info.plist */,
 				6E58AB6A1AE919D8004C78DF /* AppDelegate.h */,
 				6E58AB6B1AE919D8004C78DF /* AppDelegate.m */,
 				6E58AB6F1AE919D8004C78DF /* Images.xcassets */,
