@@ -889,18 +889,12 @@
             </connections>
         </arrayController>
         <customObject id="coQ-4J-dUr" userLabel="NSSearchField Autocomplete" customClass="GDCAutocomplete">
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="searchMode" value="YES"/>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="controlToComplete" destination="Kka-BC-cC7" id="O6A-eG-G71"/>
                 <outlet property="delegate" destination="4KS-3i-EEM" id="Hng-US-tvQ"/>
             </connections>
         </customObject>
         <customObject id="Dhs-S5-X1Q" userLabel="NSTableView Autocomplete" customClass="GDCAutocomplete">
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="searchMode" value="YES"/>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="controlToComplete" destination="swK-Tl-fp3" id="62R-03-VUh"/>
                 <outlet property="customFooterView" destination="AkP-P1-hPL" id="sl8-hJ-mkM"/>
