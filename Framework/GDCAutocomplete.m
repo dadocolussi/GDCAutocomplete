@@ -78,7 +78,6 @@ static char *AttachedControlWindowContext = "window";
 @property (assign, nonatomic) BOOL isAttached;
 @property (copy, nonatomic) NSString *originalInput;
 @property (assign, nonatomic) BOOL autocompleteSubviews;
-@property (assign, nonatomic) BOOL isDeleting;
 
 
 - (void)setupViews;
@@ -813,11 +812,6 @@ static char *AttachedControlWindowContext = "window";
 		return;
 	}
 	
-	if (self.isDeleting)
-	{
-		return;
-	}
-	
 	NSAssert(self.delegate != nil, @"Cannot autocomplete without delegate");
 	NSAssert(notification.object == self.fieldEditor, @"Unexpected field editor");
 	self.originalInput = self.fieldEditor.string;
@@ -904,17 +898,8 @@ static char *AttachedControlWindowContext = "window";
 
 - (void)deleteBackward:(id)sender
 {
-	self.isDeleting = YES;
-	[self.fieldEditor deleteBackward:sender];
-	self.isDeleting = NO;
-	NSRange r = self.fieldEditor.selectedRange;
-	
-	if (!self.searchMode && r.length > 0 && r.location + r.length == self.fieldEditor.string.length)
-	{
-		[self.itemsView clearHighlighting];
-	}
-	
-	[self hideWindow:sender];
+    [self.fieldEditor deleteBackward:sender];
+    [self.itemsView clearHighlighting];
 }
 
 
