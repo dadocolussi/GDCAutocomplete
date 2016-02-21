@@ -61,7 +61,7 @@ FOUNDATION_EXPORT const unsigned char GDCAutocompleteVersionString[];
 
 
 // Search mode means that suggested items are highlighted as the mouse moves
-// over the items and that the field editor never udpated to reflect currently
+// over the items and that the field editor never udpates to reflect currently
 // highlighted item. This OFF by default, except when completing an NSSearchField.
 @property (assign, nonatomic) BOOL searchMode;
 
