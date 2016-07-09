@@ -3,4 +3,5 @@
 *.xccheckout
 *.xcuserdatad
 *.xcworkspacedata
+*.xcscmblueprint
 .DS_Store
