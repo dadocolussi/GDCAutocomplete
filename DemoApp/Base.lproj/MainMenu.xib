@@ -872,7 +872,6 @@
             <connections>
                 <outlet property="allItems" destination="qm9-pr-8Bc" id="pap-Oz-GG7"/>
                 <outlet property="filteredItems" destination="b6s-xZ-vxd" id="fip-vr-Eip"/>
-                <outlet property="view" destination="Kka-BC-cC7" id="aMh-Yh-Lbq"/>
             </connections>
         </viewController>
         <viewController id="1Wp-l0-Cdg" userLabel="NSTableView Controller" customClass="TableViewController">
