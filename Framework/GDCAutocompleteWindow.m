@@ -61,6 +61,12 @@
 }
 
 
+- (BOOL)isKeyWindow
+{
+    return YES;
+}
+
+
 - (BOOL)canBecomeMainWindow
 {
 	return NO;

@@ -785,7 +785,7 @@ static char *AttachedControlWindowContext = "window";
 		}
 		
 		[self.controlWindow addChildWindow:self.window ordered:NSWindowAbove];
-		[self.window makeKeyAndOrderFront:sender];
+        [self.window orderFront:nil];
 		[self.window makeFirstResponder:self.itemsView];
 	}
 	else
