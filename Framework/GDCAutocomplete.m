@@ -815,11 +815,10 @@ static char *AttachedControlWindowContext = "window";
 	NSAssert(self.delegate != nil, @"Cannot autocomplete without delegate");
 	NSAssert(notification.object == self.fieldEditor, @"Unexpected field editor");
 	self.originalInput = self.fieldEditor.string;
+    [self refreshSuggestedItems];
 	
 	if (self.fieldEditor.string.length > 0)
 	{
-		[self refreshSuggestedItems];
-		
 		if (self.suggestedItems.firstObject == nil)
 		{
 			[self hideWindow:nil];
