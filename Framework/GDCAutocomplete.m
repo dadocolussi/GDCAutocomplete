@@ -888,7 +888,13 @@ static char *AttachedControlWindowContext = "window";
 	}
 	else if (aSelector == @selector(moveDown:) && !self.window.isVisible)
 	{
-		return NO;
+        if (self.suggestedItems.firstObject == nil)
+        {
+            return NO;
+        }
+        
+        [self showWindow:nil];
+        return YES;
 	}
 	
 	return [self tryToPerform:aSelector with:aTextView];
