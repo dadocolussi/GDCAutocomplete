@@ -49,7 +49,7 @@
 {
 	if (!ac.window.isVisible)
 	{
-		NSText *fieldEditor = [(id)self.view currentEditor];
+        NSText *fieldEditor = ac.controlToComplete.currentEditor;
 		
 		// Show the autocomplete window immediately only if the current search string
 		// in the field editor matches with the most recent filtering.
