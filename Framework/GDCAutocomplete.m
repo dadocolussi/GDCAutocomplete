@@ -65,6 +65,7 @@ static char *AttachedControlWindowContext = "window";
 @interface GDCAutocomplete () <NSTextViewDelegate, GDCAutocompleteItemsViewDelegate>
 
 
+@property (weak, nonatomic) NSControl *controlToComplete;
 @property (strong, nonatomic) GDCAutocompleteFieldEditorDelegateInterceptor *interceptor;
 @property (strong, nonatomic) NSText *fieldEditor;
 @property (strong, nonatomic) NSView *containerView;
@@ -81,8 +82,6 @@ static char *AttachedControlWindowContext = "window";
 
 
 - (void)setupViews;
-- (void)attachToControl:(NSControl*)control;
-- (void)detach;
 - (void)refreshSuggestedItems;
 - (NSString*)titleForItem:(id)item;
 

@@ -41,8 +41,9 @@ FOUNDATION_EXPORT const unsigned char GDCAutocompleteVersionString[];
 
 
 // This should reference an NSControl object that will be autocompleted.
+// Use -attachToControl: to set the control to complete.
 // Required.
-@property (weak, nonatomic) IBOutlet NSControl *controlToComplete;
+@property (weak, nonatomic, readonly) IBOutlet NSControl *controlToComplete;
 
 
 // Custom header and footer views.
@@ -64,6 +65,10 @@ FOUNDATION_EXPORT const unsigned char GDCAutocompleteVersionString[];
 // over the items and that the field editor never udpates to reflect currently
 // highlighted item. This OFF by default, except when completing an NSSearchField.
 @property (assign, nonatomic) BOOL searchMode;
+
+
+- (void)attachToControl:(NSControl*)control;
+- (void)detach;
 
 
 @end
