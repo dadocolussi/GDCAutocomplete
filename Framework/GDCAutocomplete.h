@@ -54,7 +54,7 @@ FOUNDATION_EXPORT const unsigned char GDCAutocompleteVersionString[];
 
 // Assign a custom NSCell if you need to change how the suggested items are displayed.
 // Optional.
-@property (weak, nonatomic) IBOutlet NSCell *cell;
+@property (strong, nonatomic) IBOutlet NSCell *cell;
 
 
 // This is the list of currently suggested items. Update this as the user input changes.
