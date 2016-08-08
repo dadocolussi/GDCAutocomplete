@@ -98,8 +98,6 @@ static char *AttachedControlWindowContext = "window";
 	if ((self = [super initWithWindow:[[GDCAutocompleteWindow alloc] init]]) != nil)
 	{
 		self.window.delegate = self;
-		
-		// Defer calling setup so that header and footer can be replaced
 		[self setupViews];
 	}
 
