@@ -438,6 +438,20 @@ static char *AttachedControlWindowContext = "window";
 - (void)setupItemsViewConstraints
 {
 	self.itemsView.translatesAutoresizingMaskIntoConstraints = NO;
+	NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.itemsView
+														   attribute:NSLayoutAttributeTop
+														   relatedBy:NSLayoutRelationEqual
+															  toItem:self.scrollView
+														   attribute:NSLayoutAttributeTop
+														  multiplier:1.0
+															constant:0.0];
+	NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.itemsView
+														   attribute:NSLayoutAttributeBottom
+														   relatedBy:NSLayoutRelationEqual
+															  toItem:self.scrollView
+														   attribute:NSLayoutAttributeBottom
+														  multiplier:1.0
+															   constant:0.0];
 	NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.itemsView
 															attribute:NSLayoutAttributeLeft
 															relatedBy:NSLayoutRelationEqual
@@ -452,6 +466,8 @@ static char *AttachedControlWindowContext = "window";
 															 attribute:NSLayoutAttributeRight
 															multiplier:1.0
 															  constant:0.0];
+	[self.scrollView addConstraint:top];
+	[self.scrollView addConstraint:bottom];
 	[self.scrollView addConstraint:left];
 	[self.scrollView addConstraint:right];
 }
