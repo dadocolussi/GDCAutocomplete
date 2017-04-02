@@ -216,14 +216,8 @@ static char *ContentBindingContext = "content";
 	
 	if (row < NSUIntegerMax)
 	{
-		if (event.clickCount == 1 && !self.highlightingTracksMouse)
-		{
-			[self highlightIndex:row];
-		}
-		else
-		{
-			[NSApp sendAction:self.action to:self.target from:self];
-		}
+		[self highlightIndex:row];
+		[NSApp sendAction:self.action to:self.target from:self];
 	}
 	else
 	{
