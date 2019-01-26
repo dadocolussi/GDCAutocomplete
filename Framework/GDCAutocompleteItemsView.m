@@ -107,9 +107,12 @@ static char *ContentBindingContext = "content";
 {
 	NSCell *cell = self.cell;
 	cell.representedObject = [self.content objectAtIndex:row];
-	cell.objectValue = [cell.representedObject description];
 	cell.highlighted = row == self.highlightedItemIndex;
 	[self.delegate itemsView:self willDisplayCell:cell atIndex:row];
+	if (cell.objectValue == nil)
+	{
+		cell.stringValue = [cell.representedObject description];
+	}
 	return cell;
 }
 

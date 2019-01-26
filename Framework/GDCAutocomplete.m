@@ -874,7 +874,7 @@ static char *AttachedControlWindowContext = "window";
 {
 	id item = cell.representedObject;
 	NSString *title = [self titleForItem:item];
-	cell.objectValue = title;
+	cell.stringValue = title;
 }
 
 
