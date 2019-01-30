@@ -798,6 +798,7 @@ static char *AttachedControlWindowContext = "window";
 		}
 		
 		[self.controlWindow addChildWindow:self.window ordered:NSWindowAbove];
+		[self layout];
         [self.window orderFront:nil];
 		[self.window makeFirstResponder:self.itemsView];
 	}
@@ -939,7 +940,6 @@ static char *AttachedControlWindowContext = "window";
 	{
 		[self refreshSuggestedItems];
 		[self showWindow:sender];
-		[self layout];
 		
 		if (self.itemsView.selectedItem == nil)
 		{
