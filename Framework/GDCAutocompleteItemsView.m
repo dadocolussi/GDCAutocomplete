@@ -51,12 +51,14 @@ static char *ContentBindingContext = "content";
 	if ((self = [super initWithFrame:frameRect]) != nil)
 	{
 		self.ignoresMultiClick = YES;
-		self.rowHeight = (CGFloat)19.0;
 		self.bindingInfos = [[NSMutableDictionary alloc] init];
 		self.highlightedItemIndex = NSUIntegerMax;
 		NSTextFieldCell *textCell = [[NSTextFieldCell alloc] initTextCell:@""];
 		textCell.drawsBackground = NO;
+		textCell.font = [NSFont menuFontOfSize:0];
 		self.cell = textCell;
+		NSRect fontRect = [textCell.font boundingRectForFont];
+		self.rowHeight = ceil(fontRect.size.height + 2.0);
 		self.highlightingTracksMouse = NO;
 	}
 	
@@ -291,11 +293,23 @@ static char *ContentBindingContext = "content";
 }
 
 
+
+- (NSRect)titleRectOfRow:(NSUInteger)row
+{
+	NSRect fontRect = self.cell.font.boundingRectForFont;
+	CGFloat h = fontRect.size.height;
+	NSRect rowRect = [self rectOfRow:row];
+	NSRect titleRect = NSInsetRect(rowRect, 0.0, (self.rowHeight - h) / 2.0);
+	return titleRect;
+}
+
+
 - (void)drawRow:(NSUInteger)rowIndex clipRect:(NSRect)rowRect
 {
 	NSCell *cell = [self preparedCellForRow:rowIndex];
 	NSAssert(cell != nil, @"Autocomplete cannot draw without a cell");
-	[cell drawWithFrame:rowRect inView:self];
+	NSRect rect = [self titleRectOfRow:rowIndex];
+	[cell drawWithFrame:rect inView:self];
 }
 
 
