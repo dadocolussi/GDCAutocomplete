@@ -55,6 +55,7 @@ static char *ContentBindingContext = "content";
 		self.bindingInfos = [[NSMutableDictionary alloc] init];
 		self.highlightedItemIndex = NSUIntegerMax;
 		NSTextFieldCell *textCell = [[NSTextFieldCell alloc] initTextCell:@""];
+		textCell.lineBreakMode = NSLineBreakByTruncatingTail;
 		textCell.drawsBackground = NO;
 		textCell.font = [NSFont menuFontOfSize:0];
 		self.cell = textCell;
