@@ -35,6 +35,7 @@ static char *ContentBindingContext = "content";
 @property (strong, nonatomic) NSMutableDictionary *bindingInfos;
 @property (strong, nonatomic) NSLayoutConstraint *heightConstraint;
 @property (assign, nonatomic) NSUInteger highlightedItemIndex;
+@property (strong, nonatomic) NSVisualEffectView *selectionEffectView;
 
 
 - (NSCell*)preparedCellForRow:(NSUInteger)row;
@@ -60,9 +61,24 @@ static char *ContentBindingContext = "content";
 		NSRect fontRect = [textCell.font boundingRectForFont];
 		self.rowHeight = ceil(fontRect.size.height + 2.0);
 		self.highlightingTracksMouse = NO;
+		
+		NSVisualEffectView *v = [[NSVisualEffectView alloc] initWithFrame:NSZeroRect];
+		v.blendingMode = NSVisualEffectBlendingModeBehindWindow;
+		v.material = NSVisualEffectMaterialSelection;
+		v.state = NSVisualEffectStateActive;
+		v.emphasized = YES;
+		self.selectionEffectView = v;
 	}
 	
 	return self;
+}
+
+
+- (void)viewWillMoveToSuperview:(NSView*)newSuperview
+{
+	[self.selectionEffectView removeFromSuperview];
+	[super viewWillMoveToSuperview:newSuperview];
+	[newSuperview addSubview:self.selectionEffectView positioned:NSWindowBelow relativeTo:self];
 }
 
 
@@ -99,6 +115,18 @@ static char *ContentBindingContext = "content";
 }
 
 
+- (BOOL)allowsVibrancy
+{
+	return YES;
+}
+
+
+- (BOOL)isOpaque
+{
+	return NO;
+}
+
+
 - (BOOL)isFlipped
 {
 	return YES;
@@ -109,7 +137,11 @@ static char *ContentBindingContext = "content";
 {
 	NSCell *cell = self.cell;
 	cell.representedObject = [self.content objectAtIndex:row];
-	cell.highlighted = row == self.highlightedItemIndex;
+	cell.backgroundStyle = NSBackgroundStyleNormal;
+	if (row == self.highlightedItemIndex)
+	{
+		cell.backgroundStyle = self.selectionEffectView.interiorBackgroundStyle;
+	}
 	[self.delegate itemsView:self willDisplayCell:cell atIndex:row];
 	if (cell.objectValue == nil)
 	{
@@ -141,7 +173,13 @@ static char *ContentBindingContext = "content";
 	
 	if (self.highlightedItemIndex < NSUIntegerMax)
 	{
-		[self setNeedsDisplayInRect:[self rectOfRow:self.highlightedItemIndex]];
+		NSRect rect = [self rectOfRow:self.highlightedItemIndex];
+		[self setNeedsDisplayInRect:rect];
+		self.selectionEffectView.frame = [self convertRect:rect toView:self.superview];
+	}
+	else
+	{
+		self.selectionEffectView.frame = NSZeroRect;
 	}
 	
 	[self updateFieldEditor];
@@ -313,13 +351,6 @@ static char *ContentBindingContext = "content";
 }
 
 
-- (void)drawBackground:(NSRect)rect
-{
-	[[NSColor colorWithWhite:0.96 alpha:1.0] set];
-	NSRectFill(rect);
-}
-
-
 - (void)drawRect:(NSRect)rect
 {
 	NSUInteger n = self.content.count;
@@ -332,8 +363,6 @@ static char *ContentBindingContext = "content";
 	}
 	else
 	{
-		[self drawBackground:rect];
-		
 		for (NSUInteger row = 0; row < n; row++)
 		{
 			NSRect rowRect = [self rectOfRow:row];

@@ -31,10 +31,22 @@
 #pragma mark Initialization
 
 
+- (BOOL)allowsVibrancy
+{
+	return YES;
+}
+
+
+- (BOOL)isOpaque
+{
+	return NO;
+}
+
+
 - (instancetype)init
 {
 	self = [self initWithContentRect:NSZeroRect
-						   styleMask:NSBorderlessWindowMask
+						   styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskFullSizeContentView
 							 backing:NSBackingStoreBuffered
 							   defer:YES];
 
@@ -47,6 +59,8 @@
 		self.opaque = NO;
 		self.movableByWindowBackground = NO;
 		self.excludedFromWindowsMenu = YES;
+		self.titlebarAppearsTransparent = YES;
+		self.titleVisibility = NSWindowTitleHidden;
 		self.backgroundColor = [NSColor clearColor];
 		[self makeFirstResponder:self.contentView];
 	}

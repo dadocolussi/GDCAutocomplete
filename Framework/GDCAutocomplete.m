@@ -118,7 +118,13 @@ static char *AttachedControlWindowContext = "window";
 
 - (void)createContainerView
 {
-	self.containerView = [[NSView alloc] initWithFrame:NSZeroRect];
+	NSVisualEffectView *v = [[NSVisualEffectView alloc] initWithFrame:NSZeroRect];
+	v.wantsLayer = YES;
+	v.blendingMode = NSVisualEffectBlendingModeWithinWindow;
+	v.material = NSVisualEffectMaterialMenu;
+	v.state = NSVisualEffectStateActive;
+	v.emphasized = YES;
+	self.containerView = v;
 	[self.window.contentView addSubview:self.containerView];
 }
 

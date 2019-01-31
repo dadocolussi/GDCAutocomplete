@@ -24,51 +24,24 @@
 #import "GDCAutocompleteHeaderView.h"
 
 
-static const CGFloat cornerRadius = 8.0;
-
-
 @implementation GDCAutocompleteHeaderView
 
 
-- (BOOL)isFlipped
+- (BOOL)allowsVibrancy
 {
 	return YES;
 }
 
 
-- (void)drawRect:(NSRect)rect
+- (BOOL)isOpaque
 {
-	NSRect bounds = [self bounds];
-	NSPoint upperLeft = NSMakePoint(0.0, 0.0);
-	NSPoint upperRight = NSMakePoint(bounds.size.width, 0.0);
-	NSPoint lowerLeft = NSMakePoint(0.0, bounds.size.height);
-	NSPoint lowerRight = NSMakePoint(bounds.size.width, bounds.size.height);
-	
-	NSBezierPath *path = [NSBezierPath bezierPath];
-	
-	// Upper left curve
-	[path moveToPoint:NSMakePoint(upperLeft.x, upperLeft.y + cornerRadius)];
-	[path curveToPoint:NSMakePoint(cornerRadius, 0.0) controlPoint1:upperLeft controlPoint2:upperLeft];
-	
-	// Top line
-	[path lineToPoint:NSMakePoint(upperRight.x - cornerRadius, upperRight.y)];
-	
-	// Top right curve
-	[path curveToPoint:NSMakePoint(upperRight.x, upperRight.y + cornerRadius) controlPoint1:upperRight controlPoint2:upperRight];
-	
-	// Right vertical line
-	[path lineToPoint:lowerRight];
-	
-	// Bottom line
-	[path lineToPoint:lowerLeft];
-	
-	// Left vertical line
-	[path closePath];
-	
-	[[NSColor clearColor] set];
-	NSRectFill(bounds);
-	[[NSColor colorWithWhite:0.96 alpha:1.0] set];
-	[path fill];
+	return NO;
+}
+
+
+- (BOOL)isFlipped
+{
+	return YES;
 }
 
 
