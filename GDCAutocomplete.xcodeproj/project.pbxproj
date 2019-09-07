@@ -239,7 +239,7 @@
 			};
 			buildConfigurationList = 6E58AB601AE919D8004C78DF /* Build configuration list for PBXProject "GDCAutocomplete" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
