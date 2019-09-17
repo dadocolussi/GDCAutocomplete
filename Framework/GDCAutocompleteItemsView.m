@@ -118,7 +118,7 @@ static char *ContentBindingContext = "content";
 
 - (BOOL)allowsVibrancy
 {
-	return YES;
+	return NO;
 }
 
 
