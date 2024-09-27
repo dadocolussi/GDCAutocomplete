@@ -171,6 +171,8 @@ static char *AttachedControlWindowContext = "window";
 {
 	self.headerView = [[GDCAutocompleteHeaderView alloc] initWithFrame:NSZeroRect];
 	[self.containerView addSubview:self.headerView];
+	self.headerView.hidden = NO;
+	self.customHeaderView.hidden = YES;
 }
 
 
@@ -220,6 +222,7 @@ static char *AttachedControlWindowContext = "window";
 	if (self.customHeaderView != nil)
 	{
 		self.headerView.hidden = YES;
+		self.customHeaderView.hidden = NO;
 		[self.containerView addSubview:self.customHeaderView];
 		self.customHeaderView.translatesAutoresizingMaskIntoConstraints = NO;
 		NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.customHeaderView
@@ -254,19 +257,10 @@ static char *AttachedControlWindowContext = "window";
 		[self.containerView addConstraint:top];
 		[self.containerView addConstraint:left];
 		[self.containerView addConstraint:right];
-		[self.containerView removeConstraint:self.scrollTopConstraint];
-		self.scrollTopConstraint = [NSLayoutConstraint constraintWithItem:self.scrollView
-																attribute:NSLayoutAttributeTop
-																relatedBy:NSLayoutRelationEqual
-																   toItem:self.customHeaderView
-																attribute:NSLayoutAttributeBottom
-															   multiplier:1.0
-																 constant:0.0];
-		[self.containerView addConstraint:self.scrollTopConstraint];
 	}
 	else
 	{
-		self.customHeaderView.hidden = NO;
+		self.customHeaderView.hidden = YES;
 	}
 }
 
@@ -275,6 +269,8 @@ static char *AttachedControlWindowContext = "window";
 {
 	self.footerView = [[GDCAutocompleteFooterView alloc] initWithFrame:NSZeroRect];
 	[self.containerView addSubview:self.footerView];
+	self.footerView.hidden = NO;
+	self.customFooterView.hidden = YES;
 }
 
 
@@ -289,11 +285,11 @@ static char *AttachedControlWindowContext = "window";
 															 multiplier:1.0
 															   constant:5.0];
 	NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.footerView
-														   attribute:NSLayoutAttributeBottom
-														   relatedBy:NSLayoutRelationEqual
-															  toItem:self.containerView
-														   attribute:NSLayoutAttributeBottom
-														  multiplier:1.0
+															  attribute:NSLayoutAttributeBottom
+															  relatedBy:NSLayoutRelationEqual
+																 toItem:self.containerView
+															  attribute:NSLayoutAttributeBottom
+															 multiplier:1.0
 															   constant:0.0];
 	NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.footerView
 															attribute:NSLayoutAttributeLeft
@@ -324,6 +320,7 @@ static char *AttachedControlWindowContext = "window";
 	if (self.customFooterView != nil)
 	{
 		self.footerView.hidden = YES;
+		self.customFooterView.hidden = NO;
 		[self.containerView addSubview:self.customFooterView];
 		self.customFooterView.translatesAutoresizingMaskIntoConstraints = NO;
 		NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.customFooterView
@@ -336,7 +333,7 @@ static char *AttachedControlWindowContext = "window";
 		NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.customFooterView
 																  attribute:NSLayoutAttributeBottom
 																  relatedBy:NSLayoutRelationEqual
-																  toItem:self.containerView
+																	 toItem:self.containerView
 																  attribute:NSLayoutAttributeBottom
 																 multiplier:1.0
 																   constant:0.0];
@@ -358,15 +355,6 @@ static char *AttachedControlWindowContext = "window";
 		[self.containerView addConstraint:bottom];
 		[self.containerView addConstraint:left];
 		[self.containerView addConstraint:right];
-		[self.containerView removeConstraint:self.scrollBottomConstraint];
-		self.scrollBottomConstraint = [NSLayoutConstraint constraintWithItem:self.scrollView
-																   attribute:NSLayoutAttributeBottom
-																   relatedBy:NSLayoutRelationEqual
-																	  toItem:self.customFooterView
-																   attribute:NSLayoutAttributeTop
-																  multiplier:1.0
-																	constant:0.0];
-		[self.containerView addConstraint:self.scrollBottomConstraint];
 	}
 	else
 	{
@@ -384,6 +372,7 @@ static char *AttachedControlWindowContext = "window";
 	self.scrollView.scrollerStyle = NSScrollerStyleOverlay;
 	self.scrollView.horizontalScrollElasticity = NSScrollElasticityNone;
 	self.scrollView.verticalScrollElasticity = NSScrollElasticityNone;
+	self.scrollView.automaticallyAdjustsContentInsets = NO;
 	self.scrollView.drawsBackground = NO;
 	self.scrollView.borderType = NSNoBorder;
 	[self.containerView addSubview:self.scrollView];
@@ -443,38 +432,14 @@ static char *AttachedControlWindowContext = "window";
 - (void)setupItemsViewConstraints
 {
 	self.itemsView.translatesAutoresizingMaskIntoConstraints = NO;
-	NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.itemsView
-														   attribute:NSLayoutAttributeTop
-														   relatedBy:NSLayoutRelationEqual
-															  toItem:self.scrollView
-														   attribute:NSLayoutAttributeTop
-														  multiplier:1.0
-															constant:0.0];
-	NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.itemsView
-														   attribute:NSLayoutAttributeBottom
-														   relatedBy:NSLayoutRelationEqual
-															  toItem:self.scrollView
-														   attribute:NSLayoutAttributeBottom
-														  multiplier:1.0
-															   constant:0.0];
-	NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.itemsView
-															attribute:NSLayoutAttributeLeft
-															relatedBy:NSLayoutRelationEqual
-															   toItem:self.scrollView
-															attribute:NSLayoutAttributeLeft
-														   multiplier:1.0
-															 constant:0.0];
-	NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self.itemsView
-															 attribute:NSLayoutAttributeRight
+	NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:self.itemsView
+															 attribute:NSLayoutAttributeWidth
 															 relatedBy:NSLayoutRelationEqual
 																toItem:self.scrollView
-															 attribute:NSLayoutAttributeRight
+															 attribute:NSLayoutAttributeWidth
 															multiplier:1.0
 															  constant:0.0];
-	[self.scrollView addConstraint:top];
-	[self.scrollView addConstraint:bottom];
-	[self.scrollView addConstraint:left];
-	[self.scrollView addConstraint:right];
+	[self.scrollView addConstraint:width];
 }
 
 
@@ -499,13 +464,13 @@ static char *AttachedControlWindowContext = "window";
 	NSAssert(control != nil, @"Cannot attach to nil control");
 	self.controlToComplete = control;
 	[self.controlToComplete addObserver:self
-						   forKeyPath:@"enabled"
-							  options:0
-							  context:AttachedControlEnabledContext];
+							 forKeyPath:@"enabled"
+								options:0
+								context:AttachedControlEnabledContext];
 	[self.controlToComplete addObserver:self
-						   forKeyPath:@"hidden"
-							  options:0
-							  context:AttachedControlHiddenContext];
+							 forKeyPath:@"hidden"
+								options:0
+								context:AttachedControlHiddenContext];
 	[self.controlToComplete addObserver:self
 							 forKeyPath:@"window"
 								options:NSKeyValueObservingOptionInitial
@@ -758,7 +723,7 @@ static char *AttachedControlWindowContext = "window";
 	
 	// Set window height to match content.
 	frame.size.height = [self contentHeight];
-
+	
 	// Respect maximum height.
 	if (self.itemsView.frame.size.height > self.window.maxSize.height)
 	{
@@ -805,7 +770,7 @@ static char *AttachedControlWindowContext = "window";
 		
 		[self.controlWindow addChildWindow:self.window ordered:NSWindowAbove];
 		[self layout];
-        [self.window orderFront:nil];
+		[self.window orderFront:nil];
 		[self.window makeFirstResponder:self.itemsView];
 	}
 	else
@@ -835,7 +800,7 @@ static char *AttachedControlWindowContext = "window";
 	NSAssert(self.delegate != nil, @"Cannot autocomplete without delegate");
 	NSAssert(notification.object == self.fieldEditor, @"Unexpected field editor");
 	self.originalInput = self.fieldEditor.string;
-    [self refreshSuggestedItems];
+	[self refreshSuggestedItems];
 	
 	if (self.fieldEditor.string.length > 0)
 	{
@@ -908,13 +873,13 @@ static char *AttachedControlWindowContext = "window";
 	}
 	else if (aSelector == @selector(moveDown:) && !self.window.isVisible)
 	{
-        if (self.suggestedItems.firstObject == nil)
-        {
-            return NO;
-        }
-        
-        [self showWindow:nil];
-        return YES;
+		if (self.suggestedItems.firstObject == nil)
+		{
+			return NO;
+		}
+		
+		[self showWindow:nil];
+		return YES;
 	}
 	
 	return [self tryToPerform:aSelector with:aTextView];
@@ -923,8 +888,8 @@ static char *AttachedControlWindowContext = "window";
 
 - (void)deleteBackward:(id)sender
 {
-    [self.fieldEditor deleteBackward:sender];
-    [self.itemsView clearHighlighting];
+	[self.fieldEditor deleteBackward:sender];
+	[self.itemsView clearHighlighting];
 }
 
 

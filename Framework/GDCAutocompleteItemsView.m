@@ -79,28 +79,30 @@ static char *ContentBindingContext = "content";
 {
 	[self.selectionEffectView removeFromSuperview];
 	[super viewWillMoveToSuperview:newSuperview];
-	[newSuperview addSubview:self.selectionEffectView positioned:NSWindowBelow relativeTo:self];
+    [newSuperview addSubview:self.selectionEffectView positioned:NSWindowBelow relativeTo:self];
 }
 
 
 - (void)setContent:(NSArray*)content
 {
 	_content = content;
-	
-	if (self.heightConstraint != nil)
+    CGFloat h = self.content.count * self.rowHeight;
+
+	if (self.heightConstraint == nil)
 	{
-		[self.enclosingScrollView removeConstraint:self.heightConstraint];
+        self.heightConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                             attribute:NSLayoutAttributeHeight
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute
+                                                            multiplier:1.0
+                                                              constant:h];
+        [self.enclosingScrollView addConstraint:self.heightConstraint];
 	}
-	
-	CGFloat h = self.content.count * self.rowHeight;
-	self.heightConstraint = [NSLayoutConstraint constraintWithItem:self
-														 attribute:NSLayoutAttributeHeight
-														 relatedBy:NSLayoutRelationEqual
-															toItem:nil
-														 attribute:NSLayoutAttributeNotAnAttribute
-														multiplier:1.0
-														  constant:h];
-	[self.enclosingScrollView addConstraint:self.heightConstraint];
+    else
+    {
+        self.heightConstraint.constant = h;
+    }
 }
 
 
@@ -355,12 +357,12 @@ static char *ContentBindingContext = "content";
 - (void)drawRect:(NSRect)rect
 {
 	NSUInteger n = self.content.count;
-	
+    NSRect b = NSIntersectionRect(self.frame, rect);
 	if (n == 0)
 	{
 		// Nothing to display, draw transparent.
 		[[NSColor clearColor] setFill];
-		NSRectFill(rect);
+		NSRectFill(b);
 	}
 	else
 	{

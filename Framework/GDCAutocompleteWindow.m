@@ -77,7 +77,7 @@
 
 - (BOOL)isKeyWindow
 {
-    return YES;
+	return YES;
 }
 
 
